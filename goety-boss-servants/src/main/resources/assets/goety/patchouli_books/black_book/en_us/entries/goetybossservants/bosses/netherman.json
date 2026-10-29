@@ -1,0 +1,39 @@
+{
+  "name": "Netherman",
+  "icon": "knightquest:chaotic_essence",
+  "category": "goety:goetybossservants/bosses",
+  "flag": "mod:knightquest",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The shapeshifting lord of the nether's rifts, bound by the darkest of rites.$(br2)Summoned with a $(l:rituals/sabbath_ritual)Sabbath Ritual$(): Chaotic Essence on the altar, with two Great Essences, an Ender Pearl and Netherite Scrap.$(br2)$(italic)Requires Knights Quest.$()"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:netherman_servant{shouldPlaySummonAnimation:0b}",
+      "scale": 0.8
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:summon_netherman_servant"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "As a Servant",
+      "text": "It shifts between its Fire, Ice and Magic forms at two thirds and a third of its health, sends up to eight clones and its orbs after your foes, and blinks away when struck.$(br2)Its curse of darkness falls only on its target."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:netherman_soul",
+      "text": "When it falls, it leaves its soul behind. On a Dark Altar it rises again for 500 souls."
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:revive_netherman_servant"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:netherman_soul": 4
+  }
+}

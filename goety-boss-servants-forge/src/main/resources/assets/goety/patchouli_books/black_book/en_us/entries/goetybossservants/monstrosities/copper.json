@@ -1,0 +1,71 @@
+{
+  "name": "Copper Monstrosity",
+  "icon": "minecraft:copper_block",
+  "category": "goety:goetybossservants/monstrosities",
+  "advancement": "goety:goety/read_terminus_scroll",
+  "secret": true,
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Lighter than the Redstone Monstrosity and cheaper to cast, its patinaed plates crackle with stored charge.$(br2)$(bold)450 health, 16 attack, 2 armor$()$(br)(by default)"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:copper_monstrosity",
+      "scale": 0.75
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Copper Monstrosity Mold",
+      "multiblock_id": "goetybossservants:copper_monstrosity_mold",
+      "multiblock": {
+        "pattern": [
+          ["_____RRRRR_____", "____RDSDSDR____", "___RSFFFFFSR___", "__RDFFFFFFFDR__", "_RSFFFFFFFFFSR_", "RDFFFFFFFFFFFDR", "RSFFFFFFFFFFFSR", "RDFFFFFCFFFFFDR", "RSFFFFFFFFFFFSR", "RDFFFFFFFFFFFDR", "_RSFFFFFFFFFSR_", "__RDFFFFFFFDR__", "___RSFFFFFSR___", "____RDSDSDR____", "_____RRRRR_____"],
+          ["_______________", "_____RRRRR_____", "____RDSDSDR____", "___RSSDSDSSR___", "__RSSSSSSSSSR__", "_RDSSSSSSSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSD0DSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSSSSSSSDR_", "__RSSSSSSSSSR__", "___RSSDSDSSR___", "____RDSDSDR____", "_____RRRRR_____", "_______________"]
+        ],
+        "mapping": {
+          "S": "minecraft:stone_bricks",
+          "D": "goety:diamond_mold_block",
+          "R": "minecraft:lava",
+          "F": "minecraft:copper_block",
+          "C": "goety:reinforced_redstone_block",
+          "0": "minecraft:stone_bricks"
+        }
+      },
+      "text": "Fill it with Copper Blocks (any), then right click the Reinforced Redstone Block with an Animation Core."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Special Attack",
+      "text": "It slams the ground, striking everything within seven blocks for three quarters of its damage and flinging it away."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:material_monstrosity_head{material:\"copper\"}",
+      "text": "Should it fall, it leaves its head, which remembers its master. Build the frame on the next page and set the head on top, in the middle, last."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Revival Frame",
+      "multiblock": {
+        "pattern": [
+          ["D#####D"],
+          ["###R###"],
+          ["_#####_"],
+          ["_##0##_"]
+        ],
+        "mapping": {
+          "#": "minecraft:copper_block",
+          "R": "goety:reinforced_redstone_block",
+          "D": "goety:diamond_mold_block",
+          "0": "goety:diamond_mold_block"
+        }
+      },
+      "enable_visualize": false
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:copper_monstrosity_spawn_egg": 1
+  }
+}

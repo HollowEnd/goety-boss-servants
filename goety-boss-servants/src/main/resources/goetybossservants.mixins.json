@@ -1,0 +1,46 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.saints.goetybossservants.mixin",
+  "plugin": "com.saints.goetybossservants.mixin.GoetyBossServantsMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ApplyBonusCountMixin",
+    "BmdOpenClassesMixin",
+    "CaptainCorneliaMixin",
+    "DarkAltarSlotFixMixin",
+    "EnchantmentHelperMixin",
+    "GoetyMobUtilMixin",
+    "ExplosionMixin",
+    "GameRulesMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "MobAccessor",
+    "MobMixin",
+    "NethermanAccessor",
+    "NethermanCloneMixin",
+    "NethermanDarknessGoalMixin",
+    "NethermanLavaTeleportGoalMixin",
+    "NethermanMixin",
+    "RitualRecipeSerializerMixin",
+    "OldChampionMixin",
+    "RedstoneMonstrosityAccessor",
+    "RisenConversionMixin",
+    "RisenCreeperMixin",
+    "RisenDropsMixin",
+    "RisenMobMixin",
+    "SaintsDragonStunMixin",
+    "SaintsDragonSleepMixin",
+    "SaintsDragonTargetMixin",
+    "ServerLevelMixin",
+    "SoulslikeGoalMixin",
+    "TargetingConditionsMixin"
+  ],
+  "client": [
+    "EntityRenderDispatcherMixin",
+    "LivingEntityRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

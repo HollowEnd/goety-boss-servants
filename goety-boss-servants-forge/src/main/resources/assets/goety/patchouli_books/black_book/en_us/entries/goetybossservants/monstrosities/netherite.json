@@ -1,0 +1,71 @@
+{
+  "name": "Netherite Monstrosity",
+  "icon": "minecraft:netherite_block",
+  "category": "goety:goetybossservants/monstrosities",
+  "advancement": "goety:goety/read_terminus_scroll",
+  "secret": true,
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The greatest of them all: a warlord of forged netherite, molten channels burning beneath its plate.$(br2)$(bold)1000 health, 30 attack, 15 armor$()$(br)(by default)"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:netherite_monstrosity",
+      "scale": 0.75
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Netherite Monstrosity Mold",
+      "multiblock_id": "goetybossservants:netherite_monstrosity_mold",
+      "multiblock": {
+        "pattern": [
+          ["_____RRRRR_____", "____RDSDSDR____", "___RSFFFFFSR___", "__RDFFFFFFFDR__", "_RSFFFFFFFFFSR_", "RDFFFFFFFFFFFDR", "RSFFFFFFFFFFFSR", "RDFFFFFCFFFFFDR", "RSFFFFFFFFFFFSR", "RDFFFFFFFFFFFDR", "_RSFFFFFFFFFSR_", "__RDFFFFFFFDR__", "___RSFFFFFSR___", "____RDSDSDR____", "_____RRRRR_____"],
+          ["_______________", "_____RRRRR_____", "____RDSDSDR____", "___RSSDSDSSR___", "__RSSSSSSSSSR__", "_RDSSSSSSSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSD0DSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSSSSSSSDR_", "__RSSSSSSSSSR__", "___RSSDSDSSR___", "____RDSDSDR____", "_____RRRRR_____", "_______________"]
+        ],
+        "mapping": {
+          "S": "minecraft:stone_bricks",
+          "D": "goety:diamond_mold_block",
+          "R": "minecraft:lava",
+          "F": "minecraft:netherite_block",
+          "C": "goety:reinforced_redstone_block",
+          "0": "minecraft:stone_bricks"
+        }
+      },
+      "text": "Fill it with Netherite Blocks, then right click the Reinforced Redstone Block with an Animation Core."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Special Attack",
+      "text": "With no minions out, it calls two half-sized monstrosities of copper, iron, gold, lapis or diamond to fight for a minute.$(br2)Otherwise it tears twelve molten fissures through the earth, then leaps skyward and lands like a meteor, Sundering whatever it crushes."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:material_monstrosity_head{material:\"netherite\"}",
+      "text": "Should it fall, it leaves its head, which remembers its master. Build the frame on the next page and set the head on top, in the middle, last."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Revival Frame",
+      "multiblock": {
+        "pattern": [
+          ["D#####D"],
+          ["###R###"],
+          ["_#####_"],
+          ["_##0##_"]
+        ],
+        "mapping": {
+          "#": "minecraft:netherite_block",
+          "R": "goety:reinforced_redstone_block",
+          "D": "goety:diamond_mold_block",
+          "0": "goety:diamond_mold_block"
+        }
+      },
+      "enable_visualize": false
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:netherite_monstrosity_spawn_egg": 1
+  }
+}

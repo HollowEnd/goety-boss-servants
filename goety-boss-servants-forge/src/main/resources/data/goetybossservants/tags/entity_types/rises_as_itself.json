@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "saintsdragons:atroxiia", "required": false},
+    {"id": "saintsdragons:cindervane", "required": false},
+    {"id": "saintsdragons:ignivorus", "required": false},
+    {"id": "saintsdragons:nulljaw", "required": false},
+    {"id": "saintsdragons:raevyx", "required": false},
+    {"id": "saintsdragons:stegonaut", "required": false},
+    {"id": "saintsdragons:varasuchus", "required": false},
+    {"id": "saintsdragons:volitans", "required": false}
+  ]
+}

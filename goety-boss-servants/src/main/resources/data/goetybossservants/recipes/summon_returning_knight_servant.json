@@ -1,0 +1,34 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["soulsweapons"]
+    }
+  ],
+  "type": "goety:ritual",
+  "ritual_type": "goety:summon_tamed",
+  "activation_item": {
+    "item": "soulsweapons:lord_soul_rose"
+  },
+  "craftType": "necroturgy",
+  "entity_to_summon": "goetybossservants:returning_knight_servant",
+  "soulCost": 20,
+  "duration": 50,
+  "ingredients": [
+    {
+      "item": "soulsweapons:nightfall"
+    },
+    {
+      "item": "soulsweapons:arkenstone"
+    },
+    {
+      "item": "soulsweapons:soul_ingot"
+    },
+    {
+      "item": "soulsweapons:soul_ingot"
+    }
+  ],
+  "result": {
+    "item": "goety:jei_dummy/none"
+  }
+}

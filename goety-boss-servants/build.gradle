@@ -1,0 +1,124 @@
+plugins {
+    id 'fabric-loom' version '1.15.5'
+    id 'java'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven { url = "https://maven.fabricmc.net/" }
+    maven { url = "https://maven.parchmentmc.org" }
+    mavenCentral()
+    // Other mods' jars (copied from the target pack): see libs/ and the README. Never redistributed.
+    flatDir { dirs 'libs' }
+}
+
+loom {
+    runs {
+        client {
+            // End-to-end check (see debug/SelfTest): gradlew runClient -Pselftest
+            if (project.hasProperty('selftest')) {
+                runDir 'run-selftest'
+                vmArg '-Dgoetybossservants.selftest=true'
+                vmArg "-Dgoetybossservants.selftest.from=${project.findProperty('selftestFrom') ?: '0'}"
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    // Mojang's names with Parchment parameter names, like the Forge version, so the two share code.
+    mappings loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-1.20.1:2023.09.03@zip")
+    }
+
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // Goety (Fabric port) is required, with what it needs at runtime.
+    modImplementation files("libs/goety-fabric-0.6.1-forge2.5.57.2+mc1.20.1.jar")
+    // Forge-style config (ServantConfig) through ForgeConfigAPIPort, which Goety already requires.
+    modCompileOnly files("libs/ForgeConfigAPIPort-v8.0.3-1.20.1-Fabric.jar")
+    modRuntimeOnly files("libs/ForgeConfigAPIPort-v8.0.3-1.20.1-Fabric.jar", "libs/trinkets-3.7.2.jar", "libs/cardinal-components-api-5.2.3.jar")
+    modImplementation files("libs/geckolib-fabric-1.20.1-4.8.4.jar")
+    // Patchouli, which Goety's Black Book (and this mod's section of it) needs: compiled against for
+    // the molds registered with it (compat/PatchouliMolds, only when it's installed), and loaded in dev
+    // runs (the Fiber it bundles is extracted to libs/nested with the others).
+    modCompileOnly files("libs/Patchouli-1.20.1-85-FABRIC.jar")
+    modRuntimeOnly files("libs/Patchouli-1.20.1-85-FABRIC.jar")
+    // Libraries bundled inside those jars (Cardinal Components, Goety's mm, Kotlin, ...): Loom doesn't
+    // unpack jar-in-jar from file dependencies, so they're extracted to libs/nested for dev runs.
+    // (BMD's own Maelstrom and MultipartEntities are run with BMD, below.)
+    modRuntimeOnly fileTree("libs/nested") { include "*.jar"; exclude "maelstrom-lib-*.jar", "MultipartEntities-*.jar" }
+
+    // The boss mods are optional: each one only unlocks its own servants. They're compiled against
+    // always, and loaded in dev runs unless left out with -PwithoutMods=aquamirae,bmd,soulslike,knightquest.
+    def without = (project.findProperty('withoutMods') ?: '').split(',')*.trim()
+    // compile: jars to compile against; runtime: extra jars it needs to run (the compile jars are
+    // also run, except "-open" copies, which run as the real jar).
+    def bossMod = { String key, List<String> compile, List<String> runtime ->
+        compile.each { modCompileOnly files("libs/${it}") }
+        if (!without.contains(key)) {
+            (compile.collect { it.replace("-open.jar", ".jar") } + runtime).each { modRuntimeOnly files("libs/${it}") }
+        }
+    }
+    bossMod('aquamirae', ["aquamirae-fabric-1.20.1-7.1.13.jar", "fragmentum-fabric-1.20.1-1.5.2.jar"], [])
+    // BMD (Fabric) is Kotlin: its boss classes are final. It's compiled against an "-open" copy with
+    // those finals removed (tools/OpenClasses.java); at runtime GoetyBossServantsMixinPlugin removes them.
+    bossMod('bmd', ["BOMD-1.7.5-1.20.1-open.jar", "cloth-config-11.1.136-fabric.jar"], ["fabric-language-kotlin-1.13.13+kotlin.2.4.10.jar",
+            "nested/maelstrom-lib-e26888c.jar", "nested/MultipartEntities-1.20-SNAPSHOT.jar"])
+    // BMD's own bundled libraries (Maelstrom, MultipartEntities), for compiling against.
+    modCompileOnly files("libs/nested/maelstrom-lib-e26888c.jar", "libs/nested/MultipartEntities-1.20-SNAPSHOT.jar")
+    bossMod('soulslike', ["soulslike-weaponry-1.4.9-1.20.1-fabric.jar"], ["AttributeFix-Fabric-1.20.1-21.0.5.jar", "ranged_weapon_api-1.1.4+1.20.1.jar"])
+    bossMod('knightquest', ["knightquest-fabric-1.20.1-1.9.6.jar", "knightlib-fabric-1.20.1-2.0.0.jar"], [])
+    // Mods whose mobs rise from Sculk Decay with compat of their own (see RisenMobs): compiled
+    // against where there's compat code, and loaded in dev runs only with -PwithRiseMods (for
+    // debug/RiseCompatChecks), with the libraries they bundle (extracted to libs/rise-nested). Saints
+    // Dragons can't load in dev as it is: its own final isFlying() and Minecraft's method_6581 in a
+    // subclass both become isFlying once named, so dev runs use a copy with its own isFlying() renamed
+    // (made with tools/RenameMethods.java); the game uses the real jar.
+    modCompileOnly files("libs/saintsdragons-0.9.52+fabric-1.20.1-dev.jar")
+    if (project.hasProperty('withRiseMods')) {
+        modRuntimeOnly files("libs/saintsdragons-0.9.52+fabric-1.20.1-dev.jar", "libs/ror-1.0-fabric.8-feeding-experimental.11.jar", "libs/cloth-config-11.1.136-fabric.jar")
+        modRuntimeOnly fileTree("libs/rise-nested") { include "*.jar" }
+    }
+    // javax.annotation.Nullable, as in the Forge version (shared code).
+    compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+    // BMD is Kotlin; the stdlib is needed to compile Java calls into it.
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:2.0.21"
+}
+
+processResources {
+    inputs.property "version", project.version
+    filteringCharset "UTF-8"
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release = 17
+    it.options.compilerArgs += ["-Xmaxerrs", "2000"]
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+jar {
+    // The self-test is dev-only.
+    exclude 'com/saints/goetybossservants/debug/**'
+    // GPL-3.0: ship the license text with the mod.
+    from('LICENSE')
+    // Credits, and the notices the licenses of what this builds on ask for.
+    from('NOTICE')
+}

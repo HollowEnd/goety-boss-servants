@@ -1,0 +1,10 @@
+{
+  "type": "goetybossservants:add_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/warden"
+    }
+  ],
+  "item": "goetybossservants:warden_core"
+}

@@ -1,0 +1,160 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+}
+
+apply plugin: 'java'
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'info'
+            // Goety/meowhem/jerotes mixin refmaps use SRG names; remap them to our dev names.
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            args '--mixin.config', 'goetybossservants.mixins.json'
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+        client {
+            // End-to-end check (see debug/SelfTest): gradlew runClient -Pselftest
+            // (-PselftestFrom=<tick> skips ahead to one boss's part, e.g. 6600 for Soulslike Weaponry)
+            // It has to be a client: meowhem crashes on dedicated servers.
+            if (project.hasProperty('selftest')) {
+                workingDirectory project.file('run-selftest')
+                property 'goetybossservants.selftest', 'true'
+                property 'goetybossservants.selftest.from', project.findProperty('selftestFrom') ?: '0'
+            }
+            // The CurseForge banner shots (see debug/Showcase): gradlew runClient -Pshowcase
+            if (project.hasProperty('showcase')) {
+                workingDirectory project.file('run-showcase')
+                property 'goetybossservants.showcase', 'true'
+            }
+            // The CurseForge page's mob, summoning page and mold pictures (see debug/Gallery): gradlew runClient -Pgallery
+            if (project.hasProperty('gallery')) {
+                workingDirectory project.file('run-showcase')
+                property 'goetybossservants.gallery', 'true'
+            }
+        }
+        server { args '--nogui' }
+    }
+}
+
+repositories {
+    // Production (SRG) jars copied from the Prion - Consumption instance. fg.deobf remaps them to
+    // our dev mappings. flatDir resolves "blank:<name>:<version>" to libs/<name>-<version>.jar.
+    flatDir { dir 'libs' }
+    maven { url = 'https://maven.theillusivec4.top/' }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    implementation fg.deobf("blank:goety:2.5.59.2")
+    implementation fg.deobf("blank:geckolib:4.8.4")
+    // Goety hard-depends on Curios.
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:5.14.1+1.20.1")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:5.14.1+1.20.1:api")
+    // Patchouli, which Goety's Black Book (and this mod's section of it) needs: compiled against for
+    // the molds registered with it (compat/PatchouliMolds, only when it's installed), and loaded in dev runs.
+    compileOnly fg.deobf("blank:Patchouli:1.20.1-85-FORGE")
+    runtimeOnly fg.deobf("blank:Patchouli:1.20.1-85-FORGE")
+
+    // The boss mods are optional: each one only unlocks its own servants. They're compiled against
+    // always, and loaded in dev runs unless left out with -PwithoutMods=meowhem,aquamirae,bmd,soulslike,knightquest
+    // (to check the mod still works without them).
+    def without = (project.findProperty('withoutMods') ?: '').split(',')*.trim()
+    def bossMod = { String key, List<String> compile, List<String> runtime ->
+        compile.each { compileOnly fg.deobf(it) }
+        if (!without.contains(key)) {
+            (compile + runtime).each { runtimeOnly fg.deobf(it) }
+        }
+    }
+    bossMod('meowhem', ["blank:meowhem:1.0", "blank:jerotes:1.3.2.1"], [])
+    // Fragmentum (Aquamirae's library) is partly Kotlin; it bundles Kotlin for Forge and YACL, which
+    // ForgeGradle doesn't unpack in dev, so they're extracted next to it in libs/.
+    bossMod('aquamirae', ["blank:aquamirae:7.1.14", "blank:fragmentum:5.4.0", "blank:kotlinforforge:4.11.0-all"],
+            ["blank:yet-another-config-lib:3.6.6+1.20.1-forge"])
+    // BMD needs Cloth Config at runtime.
+    bossMod('bmd', ["blank:bomd:1.1.1", "blank:cerbons_api:1.0.0"], ["blank:cloth_config:11.1.136"])
+    // Soulslike Weaponry and its Ranged Weapon API ship mixins written against SRG names with no
+    // refmap, which can't apply in dev. Dev-only copies keep just the mixins other code relies on:
+    // Soulslike's six accessors (given a small SRG refmap, remapped like the others above) and the
+    // API's two item-interface mixins. The real jars are used in the game.
+    bossMod('soulslike', ["blank:soulsweapons:1.4.10-devmixins"], ["blank:attributefix:21.0.5", "blank:ranged_weapon_api:2.3.4-devmixins"])
+    bossMod('knightquest', ["blank:knightquest:1.9.6", "blank:knightlib:2.0.5"], [])
+
+    // Mods whose mobs rise from Sculk Decay with compat of their own (see RisenMobs, SculkPuppets):
+    // compiled against where there's compat code, and loaded in dev runs only with -PwithRiseMods
+    // (for debug/RiseCompatChecks). Raxiores bundles MixinExtras, which ForgeGradle doesn't unpack
+    // in dev, so it's extracted next to it in libs/. Saints Dragons can't load in dev as it is: its own
+    // final isFlying() and Minecraft's m_29443_ in a subclass both become isFlying once renamed, so this
+    // is compiled and run against a copy with its own isFlying() renamed (made with tools/RenameMethods.java);
+    // the game uses the real jar.
+    def riseMod = { List<String> compile, List<String> runtime ->
+        compile.each { compileOnly fg.deobf(it) }
+        if (project.hasProperty('withRiseMods')) {
+            runtime.each { runtimeOnly fg.deobf(it) }
+        }
+    }
+    riseMod(["blank:astemirlib:1.20.1-1.25"], ["blank:astemirlib:1.20.1-1.25", "blank:thedawnera:1.20.1-0.642"])
+    riseMod(["blank:saintsdragons:0.9.2+forge-1.20.1-dev"], ["blank:saintsdragons:0.9.2+forge-1.20.1-dev"])
+    riseMod([], ["blank:ror:1.0", "blank:mixinextras-forge:0.5.3"])
+}
+
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version_range: minecraft_version_range,
+            forge_version_range    : forge_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    // The self-test is dev-only.
+    exclude 'com/saints/goetybossservants/debug/**'
+    // GPL-3.0: ship the license text with the mod.
+    from('LICENSE')
+    // Credits, and the notices the licenses of what this builds on ask for.
+    from('NOTICE')
+    manifest {
+        attributes([
+                'Specification-Title'   : mod_id,
+                'Specification-Vendor'  : mod_authors,
+                'Specification-Version' : '1',
+                'Implementation-Title'  : project.name,
+                'Implementation-Version': project.jar.archiveVersion,
+                'Implementation-Vendor' : mod_authors,
+                // Our mixins only target meowhem's and our own classes (remap = false), so no refmap is needed.
+                'MixinConfigs'          : 'goetybossservants.mixins.json',
+        ])
+    }
+    finalizedBy 'reobfJar'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

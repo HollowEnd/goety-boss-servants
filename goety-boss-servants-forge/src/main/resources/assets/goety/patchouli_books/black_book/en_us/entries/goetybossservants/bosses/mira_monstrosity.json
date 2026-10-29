@@ -1,0 +1,89 @@
+{
+  "name": "Mira Monstrosity",
+  "icon": "goetybossservants:mira_monstrosity_head",
+  "category": "goety:goetybossservants/bosses",
+  "flag": "mod:meowhem",
+  "advancement": "goety:goety/read_terminus_scroll",
+  "secret": true,
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A colossus of fired clay, cast in the mold of the $(l:summons/redstone_monstrosity)Redstone Monstrosity$() with Orange Terracotta in place of redstone.$(br2)Building it needs the Terminus research, and uses up the Animation Core, the core, the terracotta and the ring.$(br2)$(italic)Requires meowhem.$()"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:mira_monstrosity",
+      "scale": 0.75
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Mira Monstrosity Mold",
+      "multiblock_id": "goetybossservants:mira_monstrosity_mold",
+      "multiblock": {
+        "pattern": [
+          ["_____RRRRR_____", "____RDSDSDR____", "___RSFFFFFSR___", "__RDFFFFFFFDR__", "_RSFFFFFFFFFSR_", "RDFFFFFFFFFFFDR", "RSFFFFFFFFFFFSR", "RDFFFFFCFFFFFDR", "RSFFFFFFFFFFFSR", "RDFFFFFFFFFFFDR", "_RSFFFFFFFFFSR_", "__RDFFFFFFFDR__", "___RSFFFFFSR___", "____RDSDSDR____", "_____RRRRR_____"],
+          ["_______________", "_____RRRRR_____", "____RDSDSDR____", "___RSSDSDSSR___", "__RSSSSSSSSSR__", "_RDSSSSSSSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSD0DSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSSSSSSSDR_", "__RSSSSSSSSSR__", "___RSSDSDSSR___", "____RDSDSDR____", "_____RRRRR_____", "_______________"]
+        ],
+        "mapping": {
+          "S": "minecraft:stone_bricks",
+          "D": "goety:diamond_mold_block",
+          "R": "minecraft:lava",
+          "F": "minecraft:orange_terracotta",
+          "C": "goety:reinforced_redstone_block",
+          "0": "minecraft:stone_bricks"
+        }
+      },
+      "text": "Right click the center Reinforced Redstone Block with an Animation Core."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Its Kin",
+      "text": "The ring decides what rises from the mold:$(li)Lava: the Mira Monstrosity$(li)Obsidian: the Obsidian Monstrosity$(li)Sculk: the Warden Monstrosity$(br2)Two may serve you at once, of any kind."
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:mira_monstrosity{MiraVariant:'obsidian'}",
+      "scale": 0.75,
+      "name": "Obsidian Monstrosity"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:mira_monstrosity{MiraVariant:'warden'}",
+      "scale": 0.75,
+      "name": "Warden Monstrosity"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "As a Servant",
+      "text": "Right click it with anything but a wand to ride it. Repair it with Orange Terracotta, or with a Reinforced Redstone Block for far more."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:mira_monstrosity_head",
+      "text": "Should it fall, it leaves its head, which remembers its master. Build the frame on the next page and set the head on top, in the middle, last."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Revival Frame",
+      "multiblock": {
+        "pattern": [
+          ["D#####D"],
+          ["###R###"],
+          ["_#####_"],
+          ["_##0##_"]
+        ],
+        "mapping": {
+          "#": "minecraft:orange_terracotta",
+          "R": "goety:reinforced_redstone_block",
+          "D": "goety:diamond_mold_block",
+          "0": "goety:diamond_mold_block"
+        }
+      },
+      "enable_visualize": false
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:mira_monstrosity_head": 7
+  }
+}

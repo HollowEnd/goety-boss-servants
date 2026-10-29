@@ -1,0 +1,39 @@
+{
+  "name": "Night Lich",
+  "icon": "bosses_of_mass_destruction:ancient_anima",
+  "category": "goety:goetybossservants/bosses",
+  "flag": "mod:bosses_of_mass_destruction",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The lich of the frozen night, raised once more, this time to your side.$(br2)Summoned with a $(l:rituals/necroturgy_ritual)Necroturgy Ritual$(): Ancient Anima on the altar, with a Skeleton Skull, a Bone, a Book and a Dark Wand.$(br2)$(italic)Requires Bosses of Mass Destruction.$()"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:night_lich",
+      "scale": 0.8
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:summon_night_lich"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "As a Servant",
+      "text": "It flies at your side, and teleports back to you when left more than 32 blocks behind. It rains comets and volleys of missiles, teleports in battle, and rages at three quarters, half and a quarter of its health.$(br2)Up to six phantoms answer its call. It brings no eternal night."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:night_lich_soul",
+      "text": "When it falls, it leaves its soul behind. On a Dark Altar it rises again for 500 souls."
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:revive_night_lich"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:night_lich_soul": 4
+  }
+}

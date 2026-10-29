@@ -1,0 +1,39 @@
+{
+  "name": "Old Champion",
+  "icon": "soulsweapons:essence_of_eventide",
+  "category": "goety:goetybossservants/bosses",
+  "flag": "mod:soulsweapons",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The undead champion of a forgotten war, risen to stand guard over you.$(br2)Summoned with a $(l:rituals/necroturgy_ritual)Necroturgy Ritual$(): an Essence of Eventide on the altar, with a Skeleton Skull, the Draugr, a Shield and a Bone.$(br2)$(italic)Requires Marium's Soulslike Weaponry.$()"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:old_champion",
+      "scale": 0.8
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:summon_old_champion"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "As a Servant",
+      "text": "It fights with its whole shield-and-sword art, and enters its second phase at half its health.$(br2)Unlike the boss, it is not slowed or weakened under the open sky."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:old_champion_soul",
+      "text": "When it falls, it leaves its soul behind. On a Dark Altar it rises again for 500 souls."
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:revive_old_champion"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:old_champion_soul": 4
+  }
+}

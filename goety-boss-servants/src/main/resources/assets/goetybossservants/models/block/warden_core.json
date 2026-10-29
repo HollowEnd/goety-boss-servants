@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "goetybossservants:block/warden_core_bottom",
+    "top": "goetybossservants:block/warden_core_top",
+    "side": "goetybossservants:block/warden_core_side",
+    "particle": "goetybossservants:block/warden_core_side"
+  }
+}

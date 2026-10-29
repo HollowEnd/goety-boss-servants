@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "goetybossservants:block/warden_core" },
+    "facing=east": { "model": "goetybossservants:block/warden_core", "y": 90 },
+    "facing=south": { "model": "goetybossservants:block/warden_core", "y": 180 },
+    "facing=west": { "model": "goetybossservants:block/warden_core", "y": 270 }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "name": "Sculk Monstrosity",
+  "icon": "goetybossservants:warden_core",
+  "category": "goety:goetybossservants/monstrosities",
+  "advancement": "goety:goety/read_terminus_scroll",
+  "secret": true,
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A Redstone Monstrosity that died in the deep dark, and was taken by the sculk. It does not rise from redstone, but around the heart of a Warden.$(br2)$(bold)900 health, 28 attack, 8 armor$()$(br)(by default)"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:sculk_monstrosity",
+      "scale": 0.75
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Sculk Monstrosity Mold",
+      "multiblock_id": "goetybossservants:sculk_monstrosity_mold",
+      "multiblock": {
+        "pattern": [
+          ["_____RRRRR_____", "____RDSDSDR____", "___RSFFFFFSR___", "__RDFFFFFFFDR__", "_RSFFFFFFFFFSR_", "RDFFFFFFFFFFFDR", "RSFFFFFHFFFFFSR", "RDFFFFHCHFFFFDR", "RSFFFFFHFFFFFSR", "RDFFFFFFFFFFFDR", "_RSFFFFFFFFFSR_", "__RDFFFFFFFDR__", "___RSFFFFFSR___", "____RDSDSDR____", "_____RRRRR_____"],
+          ["_______________", "_____RRRRR_____", "____RDSDSDR____", "___RSSDSDSSR___", "__RSSSSSSSSSR__", "_RDSSSSSSSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSD0DSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSSSSSSSDR_", "__RSSSSSSSSSR__", "___RSSDSDSSR___", "____RDSDSDR____", "_____RRRRR_____", "_______________"]
+        ],
+        "mapping": {
+          "S": "minecraft:stone_bricks",
+          "D": "goety:diamond_mold_block",
+          "R": "minecraft:sculk_sensor",
+          "F": "minecraft:sculk_catalyst",
+          "C": "goetybossservants:warden_core",
+          "0": "minecraft:stone_bricks",
+          "H": "minecraft:sculk_shrieker"
+        }
+      },
+      "text": "Right click the Warden Core with an Animation Core."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "The Mold",
+      "text": "$(li)Sculk Sensors for the ring (calibrated ones too)$(li)Sculk Catalysts for the fill$(li)Four Sculk Shriekers round the core$(li)A Warden Core at its heart$(br2)Everything but the bricks and Diamond Mold Blocks is used up as it rises, and its shriekers shriek one last time."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:warden_core",
+      "text": "Every Warden carries a Warden Core, and gives it up when slain. The souls inside it still beat with the Warden's heart.$(br2)Crafted on its own, it breaks into four Echo Shards."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "goetybossservants:echo_shards_from_warden_core"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Sculk Decay",
+      "text": "Every blow it lands spreads $(bold)Sculk Decay$(), which stacks up to ten times and eats through armor.$(br2)Whatever dies while decaying rises again to fight for it for three minutes, as itself or as a sculk zombie."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Special Attack",
+      "text": "It slams with its tentacle arm, and belches globs of sculk that leave a creeping mire.$(br2)Its special attack raises four to six tentacles from the ground around its foes, each slamming down twice."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:material_monstrosity_head{material:\"sculk\"}",
+      "text": "Should it fall, it leaves its head, which remembers its master. Build the frame on the next page and set the head on top, in the middle, last."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Revival Frame",
+      "multiblock": {
+        "pattern": [
+          ["D#####D"],
+          ["###R###"],
+          ["_#####_"],
+          ["_##0##_"]
+        ],
+        "mapping": {
+          "#": "minecraft:sculk",
+          "R": "goety:reinforced_redstone_block",
+          "D": "goety:diamond_mold_block",
+          "0": "goety:diamond_mold_block"
+        }
+      },
+      "enable_visualize": false
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:warden_core": 4,
+    "goetybossservants:sculk_monstrosity_spawn_egg": 1
+  }
+}

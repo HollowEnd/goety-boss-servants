@@ -1,0 +1,24 @@
+.gradle/
+build/
+out/
+run/
+*.classpath
+*.project
+.settings/
+.idea/
+*.iml
+bin/
+libs/
+
+# Dev runs and self-test output
+run-selftest/
+run-showcase/
+*.log
+*_log.txt
+
+# Local scratch: listings and an extracted copy of Aquamirae's files (not ours to publish), and
+# Aquamirae's own descriptor (this mod's is in src/main/resources).
+/fabric.mod.json
+/aq6.txt
+/aq7.txt
+/tmp_gl/

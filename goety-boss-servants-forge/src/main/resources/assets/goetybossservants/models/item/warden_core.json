@@ -1,0 +1,6 @@
+{
+  "parent": "goetybossservants:block/warden_core",
+  "textures": {
+    "top": "goetybossservants:block/warden_core_top_lit"
+  }
+}

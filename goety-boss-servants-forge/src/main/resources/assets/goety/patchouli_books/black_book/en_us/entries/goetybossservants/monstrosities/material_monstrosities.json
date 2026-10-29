@@ -1,0 +1,28 @@
+{
+  "name": "Material Monstrosities",
+  "icon": "goety:animation_core",
+  "category": "goety:goetybossservants/monstrosities",
+  "priority": true,
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The $(l:summons/redstone_monstrosity)Redstone Monstrosity$()'s mold need not be filled with redstone. Fill it with another material and a monstrosity of that material rises instead, with its own strength, and its own special attack in place of Redstone Cubes."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "The Fills",
+      "text": "$(li)Copper Blocks, of any age, waxed or not$(li)Iron Blocks$(li)Gold Blocks$(li)Lapis Blocks$(li)Diamond Blocks$(li)Netherite Blocks$(br2)The $(l:goetybossservants/monstrosities/sculk)Sculk Monstrosity$() has a mold of its own."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Building",
+      "text": "As with the Redstone Monstrosity, building one needs the Terminus research and uses up the Animation Core, the core, the fill and the lava; the bricks and Diamond Mold Blocks stay.$(br2)Two of each kind may serve you at once."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Upkeep",
+      "text": "Repair one with a block of its material, or with a Reinforced Redstone Block for far more.$(br2)When one falls it leaves its head, which remembers its master, and rises again from a frame of its material."
+    }
+  ]
+}

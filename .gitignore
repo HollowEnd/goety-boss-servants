@@ -1,0 +1,14 @@
+# Only the mod's own work goes in this repository: the two loader projects, the tools that made its
+# textures and pictures, and the top-level README and LICENSE. Everything else in this folder (other
+# mods' sources and jars, backups, logs, previews) stays local.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/LICENSE
+!/goety-boss-servants/
+!/goety-boss-servants-forge/
+!/tools/
+
+# A third-party decompiler, kept local.
+/tools/*.jar

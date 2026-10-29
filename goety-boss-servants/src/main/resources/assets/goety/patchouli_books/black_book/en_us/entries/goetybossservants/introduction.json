@@ -1,0 +1,29 @@
+{
+  "name": "Boss Servants",
+  "icon": "goety:dark_wand",
+  "category": "goety:goetybossservants",
+  "priority": true,
+  "read_by_default": true,
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "With the right ritual, a boss of another world can be called up to serve you, and Goety's Redstone Monstrosity can be cast in metals other than redstone.$(br2)Each boss comes from its own mod, and its pages appear in this book only when that mod is installed."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Bound Bosses",
+      "text": "$(bold)Who needs what$()$(br)$(li)Captain Cornelia ($(italic)Aquamirae$())$(li)Void Blossom and Night Lich ($(italic)Bosses of Mass Destruction$())$(li)Old Champion and Returning Knight ($(italic)Marium's Soulslike Weaponry$())$(li)Netherman ($(italic)Knights Quest$())$(br2)The seven $(l:goetybossservants/monstrosities/material_monstrosities)Material Monstrosities$() need nothing but Goety."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Servitude",
+      "text": "Bound bosses are servants like any other. The Dark Wand orders them to follow, wander, stay or guard; they fight whatever you fight, and never turn on you, your allies or your pets.$(br2)They break no blocks unless the server allows it, and only one of each boss summoned by ritual will serve you at a time."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Souls",
+      "text": "A fallen boss summoned by ritual leaves its soul behind. Set the soul on a Dark Altar as the activation item, with nothing on the pedestals, and the boss rises again for 500 souls.$(br2)It then serves whoever performed the ritual."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+logoFile="assets/goetybossservants/icon.png"
+# Pixel art: keep it sharp when scaled.
+logoBlur=false
+credits="Unofficial add-on for Goety, with bosses from meowhem, Aquamirae, Bosses of Mass Destruction, Marium's Soulslike Weaponry and Knights Quest; see the NOTICE file in the jar for credits and licenses."
+authors="${mod_authors}"
+description='''${mod_description}'''
+
+[[dependencies.${mod_id}]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="goety"
+    mandatory=true
+    versionRange="[2.5.59,)"
+    ordering="AFTER"
+    side="BOTH"
+
+# The boss mods are optional: each one only unlocks its own servants.
+[[dependencies.${mod_id}]]
+    modId="meowhem"
+    mandatory=false
+    versionRange="[1.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="aquamirae"
+    mandatory=false
+    versionRange="[7.1,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="bosses_of_mass_destruction"
+    mandatory=false
+    versionRange="[1.1,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="soulsweapons"
+    mandatory=false
+    versionRange="[1.4,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="knightquest"
+    mandatory=false
+    versionRange="[1.9,)"
+    ordering="AFTER"
+    side="BOTH"
+
+# Optional: Goety's Black Book (with this mod's section) needs Patchouli.
+[[dependencies.${mod_id}]]
+    modId="patchouli"
+    mandatory=false
+    versionRange="*"
+    ordering="NONE"
+    side="BOTH"

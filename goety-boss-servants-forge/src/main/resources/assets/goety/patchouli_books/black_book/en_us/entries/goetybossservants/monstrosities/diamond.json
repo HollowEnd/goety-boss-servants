@@ -1,0 +1,71 @@
+{
+  "name": "Diamond Monstrosity",
+  "icon": "minecraft:diamond_block",
+  "category": "goety:goetybossservants/monstrosities",
+  "advancement": "goety:goety/read_terminus_scroll",
+  "secret": true,
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A glittering giant of cut crystal, as hard as it is beautiful.$(br2)$(bold)800 health, 26 attack, 10 armor$()$(br)(by default)"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:diamond_monstrosity",
+      "scale": 0.75
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Diamond Monstrosity Mold",
+      "multiblock_id": "goetybossservants:diamond_monstrosity_mold",
+      "multiblock": {
+        "pattern": [
+          ["_____RRRRR_____", "____RDSDSDR____", "___RSFFFFFSR___", "__RDFFFFFFFDR__", "_RSFFFFFFFFFSR_", "RDFFFFFFFFFFFDR", "RSFFFFFFFFFFFSR", "RDFFFFFCFFFFFDR", "RSFFFFFFFFFFFSR", "RDFFFFFFFFFFFDR", "_RSFFFFFFFFFSR_", "__RDFFFFFFFDR__", "___RSFFFFFSR___", "____RDSDSDR____", "_____RRRRR_____"],
+          ["_______________", "_____RRRRR_____", "____RDSDSDR____", "___RSSDSDSSR___", "__RSSSSSSSSSR__", "_RDSSSSSSSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSD0DSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSSSSSSSDR_", "__RSSSSSSSSSR__", "___RSSDSDSSR___", "____RDSDSDR____", "_____RRRRR_____", "_______________"]
+        ],
+        "mapping": {
+          "S": "minecraft:stone_bricks",
+          "D": "goety:diamond_mold_block",
+          "R": "minecraft:lava",
+          "F": "minecraft:diamond_block",
+          "C": "goety:reinforced_redstone_block",
+          "0": "minecraft:stone_bricks"
+        }
+      },
+      "text": "Fill it with Diamond Blocks, then right click the Reinforced Redstone Block with an Animation Core."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Special Attack",
+      "text": "Diamond spikes burst from the ground beneath every foe within fourteen blocks, then rain down from above for two seconds."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:material_monstrosity_head{material:\"diamond\"}",
+      "text": "Should it fall, it leaves its head, which remembers its master. Build the frame on the next page and set the head on top, in the middle, last."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Revival Frame",
+      "multiblock": {
+        "pattern": [
+          ["D#####D"],
+          ["###R###"],
+          ["_#####_"],
+          ["_##0##_"]
+        ],
+        "mapping": {
+          "#": "minecraft:diamond_block",
+          "R": "goety:reinforced_redstone_block",
+          "D": "goety:diamond_mold_block",
+          "0": "goety:diamond_mold_block"
+        }
+      },
+      "enable_visualize": false
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:diamond_monstrosity_spawn_egg": 1
+  }
+}

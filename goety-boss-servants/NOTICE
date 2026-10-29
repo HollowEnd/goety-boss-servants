@@ -1,0 +1,77 @@
+Goety Boss Servants (Fabric)
+Copyright (c) 2026 Saints
+Licensed under the GNU General Public License, version 3 only: see LICENSE.
+
+An unofficial add-on for Goety. It isn't affiliated with or endorsed by the authors of the mods
+below, and ships none of their files: each boss's model, textures, sounds and behaviour come from
+that mod, which must be installed. The exceptions are noted under "Third-party notices".
+
+
+CREDITS
+
+- Goety by Polarice3 (MIT), Fabric port by Sh1roCu (MIT). The servant system this builds on. The
+  material monstrosities extend Goety's Redstone Monstrosity and reuse its model, animations,
+  renderer and head model.
+- Aquamirae and Fragmentum by Obscuria (Obscuria Modding License / Obscuria Ecosystem License).
+  Captain Cornelia extends Aquamirae's Cornelia, and a mixin adjusts her rage at runtime. Used with
+  the authors' permission for add-ons that require their mod.
+- Bosses of Mass Destruction by Barribob (LGPL-3.0). The Night Lich and Void Blossom servants extend
+  BMD's classes.
+- Marium's Soulslike Weaponry by Marium Bacchus (CC0-1.0). The Old Champion and Returning Knight
+  servants extend its bosses.
+- Knights Quest (GPL-3.0) and KnightLib (LGPL-3.0) by Xylonity. The Netherman servant extends
+  Knights Quest's Netherman, and mixins adjust its clones and goals at runtime.
+- GeckoLib by Gecko, Eliot, AzureDoom, DerToaster, Tslat and Witixin (MIT), used through the boss
+  mods.
+- Compatibility only (none of their files or code used): Saints Dragons, The Dawn Era (AstemirLib),
+  Raxiores, Patchouli.
+
+
+THIRD-PARTY NOTICES
+
+1. Goety
+
+Parts of this mod are derived from Goety by Polarice3: the material monstrosity skins
+(assets/goetybossservants/textures/entity/monstrosity, recoloured from its Redstone Monstrosity
+textures), the Sculk glob texture (from its scatter mine glow texture), the monstrosity molds' block
+layout (construct/MonstrosityMoldShape) and the monstrosity heads' placement
+(client/MaterialHeadRenderer). Those parts are under this license:
+
+MIT License
+
+Copyright (c) 2023 Polarice3
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+2. Bosses of Mass Destruction
+
+The Night Lich and Void Blossom servants' attack classes and renderer setup
+(entity/lich/NightLichServantAttacks, entity/voidblossom/VoidBlossomServantAttacks,
+entity/voidblossom/VoidBlossomServantBlossoms, client/BmdClient) are adapted from Bosses of Mass
+Destruction by Barribob, licensed under the GNU Lesser General Public License, version 3. Each of
+those source files says what was changed. As part of this GPL-3.0 work, their source is available
+with the rest of this mod's source.
+
+3. Minecraft
+
+Some textures are built from or include vanilla Minecraft textures (Mojang Studios): the status
+effect icons (assets/goetybossservants/textures/mob_effect: vanilla item and block sprites, except
+gilded.png), the material monstrosity skins and parts (vanilla block textures, the enchanting table's
+glyphs, the warden's), and the Warden Core (the warden's texture). Those remain Mojang's and aren't
+covered by this mod's license.

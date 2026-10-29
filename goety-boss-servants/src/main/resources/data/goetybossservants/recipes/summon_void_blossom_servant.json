@@ -1,0 +1,34 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["bosses_of_mass_destruction"]
+    }
+  ],
+  "type": "goety:ritual",
+  "ritual_type": "goety:summon_tamed",
+  "activation_item": {
+    "item": "bosses_of_mass_destruction:void_thorn"
+  },
+  "craftType": "overgrown",
+  "entity_to_summon": "goetybossservants:void_blossom_servant",
+  "soulCost": 20,
+  "duration": 50,
+  "ingredients": [
+    {
+      "item": "bosses_of_mass_destruction:crystal_fruit"
+    },
+    {
+      "item": "bosses_of_mass_destruction:crystal_fruit"
+    },
+    {
+      "item": "goety:quick_growing_seed"
+    },
+    {
+      "item": "goety:quick_growing_seed"
+    }
+  ],
+  "result": {
+    "item": "goety:jei_dummy/none"
+  }
+}

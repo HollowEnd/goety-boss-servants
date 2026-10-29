@@ -1,0 +1,8 @@
+{
+  "name": "Bound Bosses",
+  "description": "Bosses from other mods, bound to your will. Each appears here only when its own mod is installed.",
+  "icon": "goety:howling_soul",
+  "parent": "goety:goetybossservants",
+  "flag": "|mod:meowhem,mod:aquamirae,mod:bosses_of_mass_destruction,mod:soulsweapons,mod:knightquest",
+  "sortnum": 1
+}

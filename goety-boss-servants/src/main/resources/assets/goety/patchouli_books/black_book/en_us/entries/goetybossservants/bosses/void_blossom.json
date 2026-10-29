@@ -1,0 +1,39 @@
+{
+  "name": "Void Blossom",
+  "icon": "bosses_of_mass_destruction:void_thorn",
+  "category": "goety:goetybossservants/bosses",
+  "flag": "mod:bosses_of_mass_destruction",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A blossom of the void, grown in your service from a single thorn.$(br2)Summoned with an $(l:rituals/overgrown_ritual)Overgrown Ritual$(): a Void Thorn on the altar, with two Crystal Fruits and two Quick-Growing Seeds.$(br2)$(italic)Requires Bosses of Mass Destruction.$()"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:void_blossom_servant",
+      "scale": 0.8
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:summon_void_blossom_servant"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "As a Servant",
+      "text": "It is rooted where it grows, so order it to stay or guard; it cannot follow you. Anything that threatens you within its reach meets every one of its attacks.$(br2)At three quarters, half and a quarter of its health it grows healing flowers that last thirty seconds."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:void_blossom_soul",
+      "text": "When it withers, it leaves its soul behind. On a Dark Altar it blooms again for 500 souls."
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:revive_void_blossom_servant"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:void_blossom_soul": 4
+  }
+}

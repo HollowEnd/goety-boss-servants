@@ -1,0 +1,7 @@
+{
+  "name": "Material Monstrosities",
+  "description": "The Redstone Monstrosity's mold, filled with copper, iron, gold, lapis, diamond, netherite or sculk.",
+  "icon": "goety:animation_core",
+  "parent": "goety:goetybossservants",
+  "sortnum": 2
+}

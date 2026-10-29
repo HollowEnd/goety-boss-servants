@@ -1,0 +1,71 @@
+{
+  "name": "Lapis Monstrosity",
+  "icon": "minecraft:lapis_block",
+  "category": "goety:goetybossservants/monstrosities",
+  "advancement": "goety:goety/read_terminus_scroll",
+  "secret": true,
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A starlit giant of lapis and gold, carrying an enchanting table on its back.$(br2)$(bold)420 health, 14 attack, 2 armor$()$(br)(by default)"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:lapis_monstrosity",
+      "scale": 0.75
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Lapis Monstrosity Mold",
+      "multiblock_id": "goetybossservants:lapis_monstrosity_mold",
+      "multiblock": {
+        "pattern": [
+          ["_____RRRRR_____", "____RDSDSDR____", "___RSFFFFFSR___", "__RDFFFFFFFDR__", "_RSFFFFFFFFFSR_", "RDFFFFFFFFFFFDR", "RSFFFFFFFFFFFSR", "RDFFFFFCFFFFFDR", "RSFFFFFFFFFFFSR", "RDFFFFFFFFFFFDR", "_RSFFFFFFFFFSR_", "__RDFFFFFFFDR__", "___RSFFFFFSR___", "____RDSDSDR____", "_____RRRRR_____"],
+          ["_______________", "_____RRRRR_____", "____RDSDSDR____", "___RSSDSDSSR___", "__RSSSSSSSSSR__", "_RDSSSSSSSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSD0DSSSDR_", "_RSDSSSDSSSDSR_", "_RDSSSSSSSSSDR_", "__RSSSSSSSSSR__", "___RSSDSDSSR___", "____RDSDSDR____", "_____RRRRR_____", "_______________"]
+        ],
+        "mapping": {
+          "S": "minecraft:stone_bricks",
+          "D": "goety:diamond_mold_block",
+          "R": "minecraft:lava",
+          "F": "minecraft:lapis_block",
+          "C": "goety:reinforced_redstone_block",
+          "0": "minecraft:stone_bricks"
+        }
+      },
+      "text": "Fill it with Lapis Blocks, then right click the Reinforced Redstone Block with an Animation Core."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Special Attack",
+      "text": "It enchants every ally within sixteen blocks for a minute, with a random enchantment.$(br2)Hand it an enchanted book and it grants that book's enchantment, at the book's level, instead. Crouch with an empty hand to take the book back.$(br2)These enchantments stack with your gear's and with potion effects."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:material_monstrosity_head{material:\"lapis\"}",
+      "text": "Should it fall, it leaves its head, which remembers its master. Build the frame on the next page and set the head on top, in the middle, last."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Revival Frame",
+      "multiblock": {
+        "pattern": [
+          ["D#####D"],
+          ["###R###"],
+          ["_#####_"],
+          ["_##0##_"]
+        ],
+        "mapping": {
+          "#": "minecraft:lapis_block",
+          "R": "goety:reinforced_redstone_block",
+          "D": "goety:diamond_mold_block",
+          "0": "goety:diamond_mold_block"
+        }
+      },
+      "enable_visualize": false
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:lapis_monstrosity_spawn_egg": 1
+  }
+}

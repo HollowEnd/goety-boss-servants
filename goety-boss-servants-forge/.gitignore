@@ -1,0 +1,22 @@
+# Build output and dev runs
+.gradle/
+build/
+run/
+run-selftest/
+run-showcase/
+*.log
+*_log.txt
+
+# Other mods' jars: local copies for compiling and the self-test only. Several licenses forbid
+# redistributing them (Aquamirae, Obscure API), and the *-devmixins copies are modified.
+libs/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+out/
+bin/
+.classpath
+.project
+.settings/

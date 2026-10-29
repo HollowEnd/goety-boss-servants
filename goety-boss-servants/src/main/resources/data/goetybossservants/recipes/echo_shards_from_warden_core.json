@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "goetybossservants:warden_core"
+    }
+  ],
+  "result": {
+    "item": "minecraft:echo_shard",
+    "count": 4
+  }
+}

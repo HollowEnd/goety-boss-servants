@@ -1,0 +1,39 @@
+{
+  "name": "Captain Cornelia",
+  "icon": "aquamirae:frozen_key",
+  "category": "goety:goetybossservants/bosses",
+  "flag": "mod:aquamirae",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The drowned captain of the frozen seas, called back from the deep to sail under your banner.$(br2)Summoned with a $(l:rituals/deep_ritual)Deep Ritual$(): the Frozen Key on the altar, and a full set of Salvager armor on the pedestals.$(br2)$(italic)Requires Aquamirae.$()"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:captain_cornelia_servant",
+      "scale": 0.8
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:summon_captain_cornelia_servant"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "As a Servant",
+      "text": "She fights as she always has, hooking foes in, then swinging and thrusting, growing enraged as the fight wears on. She picks her weapon for each foe: the Remnant Saber when badly hurt, her own blade when it can finish the foe quickly, the Shatterblade against hulking brutes.$(br2)Once each fight, she stands her ground and heals."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:captain_cornelia_soul",
+      "text": "When she falls, she leaves her soul behind. On a Dark Altar it brings her back for 500 souls."
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:revive_captain_cornelia_servant"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:captain_cornelia_soul": 4
+  }
+}

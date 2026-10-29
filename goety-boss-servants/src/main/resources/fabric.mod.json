@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "goetybossservants",
+  "version": "${version}",
+  "name": "Goety Boss Servants",
+  "description": "Unofficial add-on for Goety: summon bosses from other mods as Goety servants. Adds seven pet monstrosities built like Goety's Redstone Monstrosity (Copper, Iron, Gold, Lapis, Diamond, Netherite, Sculk), each with its own special attack. Each boss mod is optional and unlocks its own servants: Captain Cornelia (Aquamirae), Void Blossom and Night Lich (Bosses of Mass Destruction), Old Champion and Returning Knight (Marium's Soulslike Weaponry), Netherman (Knights Quest). See the NOTICE file in the jar for credits and licenses.",
+  "authors": [
+    "Saints"
+  ],
+  "contact": {},
+  "license": "GPL-3.0-only",
+  "icon": "assets/goetybossservants/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.saints.goetybossservants.GoetyBossServants"
+    ],
+    "client": [
+      "com.saints.goetybossservants.client.GoetyBossServantsClient"
+    ]
+  },
+  "mixins": [
+    "goetybossservants.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*",
+    "forgeconfigapiport": "*",
+    "goety": "*"
+  },
+  "suggests": {
+    "aquamirae": ">=7.1",
+    "bosses_of_mass_destruction": ">=1.7",
+    "soulsweapons": ">=1.4",
+    "knightquest": ">=1.9",
+    "patchouli": "*"
+  }
+}

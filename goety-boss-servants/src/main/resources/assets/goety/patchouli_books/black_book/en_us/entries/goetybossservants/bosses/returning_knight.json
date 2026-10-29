@@ -1,0 +1,39 @@
+{
+  "name": "Returning Knight",
+  "icon": "soulsweapons:lord_soul_rose",
+  "category": "goety:goetybossservants/bosses",
+  "flag": "mod:soulsweapons",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The knight who always returns, and now returns to you.$(br2)Summoned with a $(l:rituals/necroturgy_ritual)Necroturgy Ritual$(): a Lord Soul on the altar, with Nightfall, an Arkenstone and two Soul Infused Ingots.$(br2)$(italic)Requires Marium's Soulslike Weaponry.$()"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "goetybossservants:returning_knight_servant",
+      "scale": 0.8
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:summon_returning_knight_servant"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "As a Servant",
+      "text": "It brings down Obliterate, Blinding Reflection, Rupture and the Mace of Spades.$(br2)The Remnants it raises serve you too, and its Dark Sorcerers heal it; up to six of them at once."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "goetybossservants:returning_knight_soul",
+      "text": "When it falls, it leaves its soul behind. On a Dark Altar it returns once more for 500 souls."
+    },
+    {
+      "type": "goety:ritual",
+      "recipe": "goetybossservants:revive_returning_knight_servant"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "goetybossservants:returning_knight_soul": 4
+  }
+}
